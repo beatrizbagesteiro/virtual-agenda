@@ -1,42 +1,43 @@
 package com.virtualagenda.virtual_agenda.service;
 
 import com.virtualagenda.virtual_agenda.entity.*;
+import com.virtualagenda.virtual_agenda.entity.EstablishmentService;
 import com.virtualagenda.virtual_agenda.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 @Service
 public class AppointmentService {
 
-    private final ServiceRepository serviceRepository;
+    private final EstablishmentServiceRepository establishmentServiceRepository;
     private final UserRepository userRepository;
     private final AppointmentRepository appointmentRepository;
     private final WorkingDaysRepository workingDaysRepository;
     private final EstablishmentRepository establishmentRepository;
 
-    public AppointmentService(AppointmentRepository appointmentRepository, ServiceRepository serviceRepository, UserRepository userRepository, WorkingDaysRepository workingDaysRepository, EstablishmentRepository establishmentRepository) {
+    public AppointmentService(AppointmentRepository appointmentRepository, EstablishmentServiceRepository establishmentServiceRepository, UserRepository userRepository, WorkingDaysRepository workingDaysRepository, EstablishmentRepository establishmentRepository) {
         this.appointmentRepository = appointmentRepository;
-        this.serviceRepository = serviceRepository;
+        this.establishmentServiceRepository = establishmentServiceRepository;
         this.userRepository = userRepository;
         this.workingDaysRepository = workingDaysRepository;
         this.establishmentRepository = establishmentRepository;
     }
 
-    public List<com.virtualagenda.virtual_agenda.entity.Service> getServices(){
-        return serviceRepository.findAll();
+
+    public List<EstablishmentService> getServices(){
+        return establishmentServiceRepository.findAll();
     }
 
-    public List<User> getProfessionalsByService(com.virtualagenda.virtual_agenda.entity.Service requiredService){
-        return requiredService.getProfessionals();
+    public List<User> getProfessionalsByService(EstablishmentService requiredEstablishmentService){
+        return requiredEstablishmentService.getProfessionals();
     }
     
-    public List<LocalTime> getAvailableTimeSlot(User requiredProfessional, LocalDate requiredDate, com.virtualagenda.virtual_agenda.entity.Service requiredService){
+    public List<LocalTime> getAvailableTimeSlot(User requiredProfessional, LocalDate requiredDate, EstablishmentService requiredEstablishmentService){
         List<LocalTime> timeBlocks = new ArrayList<>();
 
         Long establishmentId = requiredProfessional.getEstablishment().getId();
@@ -51,7 +52,7 @@ public class AppointmentService {
 
         while(!openingHour.isAfter(closingHour)){
             timeBlocks.add(openingHour);
-            openingHour = openingHour.plusMinutes(requiredService.getDuration());
+            openingHour = openingHour.plusMinutes(requiredEstablishmentService.getDuration());
         }
 
 
@@ -74,5 +75,7 @@ public class AppointmentService {
 
         return  timeBlocks;
     }
+
+
 
 }

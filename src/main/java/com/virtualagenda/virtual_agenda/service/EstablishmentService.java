@@ -6,12 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EstablishmentService {
-    @Autowired
-    public EstablishmentService (final EstablishmentRepository repo){
-    }
-
-
-
 
 
 }

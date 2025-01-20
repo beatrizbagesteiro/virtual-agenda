@@ -16,7 +16,7 @@ import java.time.LocalTime;
 public class WorkingDays {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     private Long id;
 
     @ManyToOne()

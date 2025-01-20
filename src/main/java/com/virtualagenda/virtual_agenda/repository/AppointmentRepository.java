@@ -12,7 +12,4 @@ import java.util.List;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
-    @Query("SELECT a FROM Appointment a WHERE a.professional.name = :name")
-    List<Appointment> getAppointmentsByProfessional(@Param("name") String name);
-    List<Appointment> getAppointmentsByDate(Date date);
 }
