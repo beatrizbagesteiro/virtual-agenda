@@ -1,0 +1,3 @@
+ALTER TABLE application_user DROP CONSTRAINT application_user_establishment_id_fkey;
+ALTER TABLE working_days DROP CONSTRAINT working_days_establishment_id_fkey;
+DROP TABLE establishment;

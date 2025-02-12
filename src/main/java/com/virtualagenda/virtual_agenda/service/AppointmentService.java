@@ -13,19 +13,19 @@ import java.util.List;
 
 @Service
 public class AppointmentService {
-
+/*
     private final EstablishmentServiceRepository establishmentServiceRepository;
     private final UserRepository userRepository;
     private final AppointmentRepository appointmentRepository;
     private final WorkingDaysRepository workingDaysRepository;
-    private final EstablishmentRepository establishmentRepository;
 
-    public AppointmentService(AppointmentRepository appointmentRepository, EstablishmentServiceRepository establishmentServiceRepository, UserRepository userRepository, WorkingDaysRepository workingDaysRepository, EstablishmentRepository establishmentRepository) {
+
+    public AppointmentService(AppointmentRepository appointmentRepository, UserRepository userRepository, WorkingDaysRepository workingDaysRepository) {
         this.appointmentRepository = appointmentRepository;
         this.establishmentServiceRepository = establishmentServiceRepository;
         this.userRepository = userRepository;
         this.workingDaysRepository = workingDaysRepository;
-        this.establishmentRepository = establishmentRepository;
+
     }
 
 
@@ -75,6 +75,8 @@ public class AppointmentService {
 
         return  timeBlocks;
     }
+
+     */
 
 
 

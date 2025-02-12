@@ -24,12 +24,6 @@ public class ProfessionalController {
         return ResponseEntity.ok(service.getProfessionals());
     }
 
-    @PostMapping
-    public ResponseEntity<String> registerProfessional(@RequestBody @Valid ProfessionalDTO data){
-        String response = service.registerProfessional(data);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
     @PutMapping
     public ResponseEntity<String> updateProfessional(@RequestBody @Valid ProfessionalDTO data){
         String response = service.updateProfessional(data);

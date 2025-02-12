@@ -23,12 +23,6 @@ public class ClientController {
         return ResponseEntity.ok(service.getClients());
     }
 
-    @PostMapping
-    public ResponseEntity<String> registerClient(@RequestBody @Valid ClientDTO data){
-        String response = service.registerClient(data);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
     @PutMapping
     public ResponseEntity<String> updateClient(@RequestBody @Valid ClientDTO data){
         String response = service.updateClient(data);

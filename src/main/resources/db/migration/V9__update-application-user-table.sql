@@ -1,0 +1,1 @@
+ALTER TABLE application_user DROP CONSTRAINT application_user_password_key;

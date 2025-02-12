@@ -1,5 +1,7 @@
 package com.virtualagenda.virtual_agenda.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.virtualagenda.virtual_agenda.dto.WorkingDaysDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,15 +18,16 @@ import java.time.LocalTime;
 public class WorkingDays {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne()
-    @JoinColumn(name = "establishment_id")
-    private Establishment establishment;
-
     private String dayOfWeek;
     private LocalTime openingHour;
     private LocalTime closingHour;
 
+    public WorkingDays(WorkingDaysDTO data){
+        this.id = data.id();
+        this.dayOfWeek = data.dayOfWeek();
+        this.openingHour = data.openingHour();
+        this.closingHour = data.closingHour();
+    }
 }
